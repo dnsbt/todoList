@@ -1,5 +1,6 @@
 <?php
 
+use App\Exceptions\TodolistAccessRestrictedException;
 use App\Models\TodoList;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Factory;

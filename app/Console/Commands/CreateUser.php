@@ -36,7 +36,7 @@ class CreateUser extends Command
         $user = new User(['name' => $name, 'email' => $email, 'password' => Hash::make($password)]);
         $user->save();
         $this->info('User created' . $user->id);
-        
+
         return 0;
     }
 }
