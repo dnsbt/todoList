@@ -1,6 +1,7 @@
 <?php
 
 use App\Exceptions\TodolistAccessRestrictedException;
+use App\Exceptions\TodoListNotFoundException;
 use App\Models\TodoList;
 use App\Models\TodoListItem;
 use Illuminate\Database\Eloquent\Collection;
@@ -21,6 +22,7 @@ class TodoListItemService
      * @param int $todoListId
      * @return Collection
      * @throws TodolistAccessRestrictedException
+     * @throws TodoListNotFoundException
      */
     public function getItems(int $todoListId): Collection
     {
