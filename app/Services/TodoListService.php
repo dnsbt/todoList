@@ -1,6 +1,7 @@
 <?php
 
 use App\Exceptions\TodolistAccessRestrictedException;
+use App\Exceptions\TodoListNotFoundException;
 use App\Models\TodoList;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Factory;
@@ -18,11 +19,25 @@ class TodoListService
         return $this->auth = $auth;
     }
 
-    public function getTodoList(): Collection
+    /**
+     * @throws TodoListNotFoundException
+     */
+    public function getTodoList(int $id): TodoList
     {
-        return TodoList::query()->where('user_id', $this->getUser()->getAuthIdetifier())->get();
+        /** @var TodoList $todoList */
+        $todoList =  TodoList::query()->where('id', $id)->first();
+        if (!$todoList) {
+            throw new TodoListNotFoundException();
+        }
+
+        return $todoList;
     }
 
+
+    /**
+     * @param string $title
+     * @return TodoList
+     */
     public function createTodoList(string $title): TodoList
     {
         $newTodoList = new TodoList();
@@ -74,6 +89,20 @@ class TodoListService
             throw new TodolistAccessRestrictedException();
         }
     }
+
+    /**
+     * @param TodoList $todoList
+     * @param bool $isCompleted
+     * @return void
+     */
+    public function setIsCompleted(TodoList $todoList, bool $isCompleted): void
+    {
+        if ($todoList->is_completed !== $isCompleted) {
+            $todoList->is_completed = $isCompleted;
+            $todoList->save();
+        }
+    }
+
 
     private function getUser(): Authenticatable
     {
