@@ -40,7 +40,7 @@ class TodoListService
      * @return void
      * @throws TodolistAccessRestrictedException
      */
-    public function updateTodoList(TodoList $todoList, string $title): TodoList
+    public function updateTodoLists(TodoList $todoList, string $title): TodoList
     {
         $this->checkAccess($todoList);
         $todoList->title = $title;
