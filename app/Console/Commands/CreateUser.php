@@ -27,7 +27,7 @@ class CreateUser extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $name = $this->ask('What is your name?');
         $email = $this->ask('What is your email?');
