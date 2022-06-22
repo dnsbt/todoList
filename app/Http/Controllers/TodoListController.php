@@ -7,7 +7,7 @@ use App\Http\Resources\TodoListResource;
 use App\Models\TodoList;
 use Illuminate\Http\JsonResponse;
 use Throwable;
-use TodoListService;
+use App\Services\TodoListService;
 
 class TodoListController extends Controller
 {

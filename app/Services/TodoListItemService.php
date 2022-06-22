@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Services;
+
 use App\Exceptions\TodolistAccessRestrictedException;
 use App\Exceptions\TodoListNotFoundException;
 use App\Models\TodoList;
