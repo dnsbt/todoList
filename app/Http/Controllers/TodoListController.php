@@ -31,7 +31,7 @@ class TodoListController extends Controller
         try {
             return response()->json(
                 TodoListResource::collection(
-                    $this->todoListService->getTodoList()
+                    $this->todoListService->getTodoLists()
                 )
             );
         } catch (Throwable $throwable) {

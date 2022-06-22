@@ -22,6 +22,14 @@ class TodoListService
     }
 
     /**
+     * @return Collection
+     */
+    public function getTodoLists(): Collection
+    {
+        return TodoList::query()->where('user_id', $this->getUser()->getAuthIdentifier())->get();
+    }
+
+    /**
      * @throws TodoListNotFoundException
      */
     public function getTodoList(int $id): TodoList
