@@ -4,6 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property-read int $todo_list_id
+ * @property-read string $title
+ * @property-read null|string $description
+ */
 class TodoListItemCreateRequest extends FormRequest
 {
     /**
