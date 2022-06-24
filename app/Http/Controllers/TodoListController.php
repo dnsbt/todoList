@@ -49,7 +49,7 @@ class TodoListController extends Controller
     {
         try {
             return response()->json(
-                TodoListResource::make($this > $this->todoListService->createTodoList($request->title))
+                TodoListResource::make($this->todoListService->createTodoList($request->title))
             );
         } catch (Throwable $throwable) {
             return response()->json(['error' => true, 'message' => $throwable->getMessage()], $throwable->getCode());

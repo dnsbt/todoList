@@ -7,9 +7,9 @@ use App\Http\Requests\TodoListItemRequest;
 use App\Http\Requests\TodoListItemUpdateRequest;
 use App\Http\Resources\TodoListItemResource;
 use App\Models\TodoListItem;
+use App\Services\TodoListItemService;
 use Illuminate\Http\JsonResponse;
 use Throwable;
-use TodoListItemService;
 
 class TodoListItemController extends Controller
 {

@@ -6,6 +6,7 @@ use App\Exceptions\TodolistAccessRestrictedException;
 use App\Exceptions\TodoListNotFoundException;
 use App\Models\TodoList;
 use App\Models\TodoListItem;
+use Exception;
 use Illuminate\Database\Eloquent\Collection;
 
 class TodoListItemService
@@ -40,6 +41,7 @@ class TodoListItemService
      * @param string|null $description
      * @return TodoListItem
      * @throws TodolistAccessRestrictedException
+     * @throws TodoListNotFoundException
      */
     public function createItem(int $todoListId, string $title, string $description = null): TodoListItem
     {
@@ -85,6 +87,7 @@ class TodoListItemService
      * @param TodoListItem $todoListItem
      * @return bool
      * @throws TodolistAccessRestrictedException
+     * @throws Exception
      */
     public function deleteItem(TodoListItem $todoListItem): bool
     {
